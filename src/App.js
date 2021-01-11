@@ -59,6 +59,7 @@ function App() {
       />
       <Timer
         sessionLengthInSeconds = {sessionLengthInSeconds}
+        breakLengthInSeconds = {breakLengthInSeconds}
       />
     </div>
   );

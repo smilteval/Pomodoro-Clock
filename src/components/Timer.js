@@ -6,10 +6,14 @@ momentDurationFormatSetup(moment);
 
 export default function Timer(props) {
 
-    let {sessionLengthInSeconds} = props; 
+    let {
+        sessionLengthInSeconds,
+        breakLengthInSeconds,
+    } = props;
 
     let [timerStatus, setTimerStatus] = useState(null);
     let [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
+    let [currentSessionType, setCurrentSessionType] = useState("session");
 
     //turn time into mm::dd format
     let formattedTimeLeft = moment.duration(timeLeft, "s").format("mm:ss", {trim: false});
@@ -32,20 +36,31 @@ export default function Timer(props) {
         else{ //if the timer hasn't started
 
             //start the timer 
-            //decrement time left by one every second
             let newTimerStatus = setInterval(() => {
                 setTimeLeft(prevTimeLeft => {
 
+                    //decrement time left by one every second
                     let newTimeLeft = prevTimeLeft - 1;
 
                     if(newTimeLeft >= 0){
                         return newTimeLeft;
                     }
-                    else{
-                        return prevTimeLeft;
+
+                    //once the time runs out
+
+                    //if in session, switch to break
+                    if(currentSessionType === "session"){
+                        setCurrentSessionType("break");
+                        setTimeLeft(breakLengthInSeconds);
+                    }
+
+                    //if on break, switch to session
+                    if(currentSessionType === "break"){
+                        setCurrentSessionType("session");
+                        setTimeLeft(sessionLengthInSeconds);
                     }
                 })
-            }, 1000); //in milliseconds
+            }, 100); //in milliseconds
 
             //indicate that the timer started
             setTimerStatus(newTimerStatus);
