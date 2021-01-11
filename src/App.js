@@ -1,6 +1,7 @@
 import "./App.css";
 import Break from "./components/Break"
 import Session from "./components/Session"
+import Timer from "./components/Timer"
 import React, {useState} from "react"
 
 function App() {
@@ -56,7 +57,9 @@ function App() {
         incrementSessionLength = {incrementSessionLength}
         decrementSessionLength = {decrementSessionLength}
       />
-      
+      <Timer
+        sessionLengthInSeconds = {sessionLengthInSeconds}
+      />
     </div>
   );
 }
