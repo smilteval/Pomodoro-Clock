@@ -67,6 +67,23 @@ function App() {
     setTimeLeft(sessionLengthInSeconds);
   }, [sessionLengthInSeconds])
 
+  useEffect(()=>{
+
+    //if the time run out
+      if(timeLeft === 0){
+
+        //switch sessions
+        if(currentSessionType === "Session"){
+          setCurrentSessionType("Break");
+          setTimeLeft(breakLengthInSeconds);
+        }
+        else if(currentSessionType === "Break"){
+          setCurrentSessionType("Session");
+          setTimeLeft(sessionLengthInSeconds);
+        }
+      }
+    }, [breakLengthInSeconds, currentSessionType, sessionLengthInSeconds, timeLeft]);
+
   let handleStartStopClick = () => {
 
     if(timerStatus !== null){ //if the timer has started
@@ -81,29 +98,7 @@ function App() {
 
         //start the timer 
         let newTimerStatus = setInterval(() => {
-            setTimeLeft(prevTimeLeft => {
-
-                //decrement time left by one every second
-                let newTimeLeft = prevTimeLeft - 1;
-
-                if(newTimeLeft >= 0){
-                    return newTimeLeft;
-                }
-
-                //once the time runs out
-
-                //if in session, switch to break
-                if(currentSessionType === "Session"){
-                    setCurrentSessionType("Break");
-                    return breakLengthInSeconds;
-                }
-
-                //if on break, switch to session
-                if(currentSessionType === "Break"){
-                    setCurrentSessionType("Session");
-                    return sessionLengthInSeconds;
-                }
-            })
+            setTimeLeft(prevTimeLeft => prevTimeLeft -1)
         }, 100); //in milliseconds
 
         //indicate that the timer started
