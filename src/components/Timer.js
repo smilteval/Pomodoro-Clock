@@ -10,7 +10,7 @@ export default function Timer(props) {
     let [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
 
     //turn time into mm::dd format
-    let formattedTimeLeft = moment.duration(timeLeft, "s").format("mm:ss");
+    let formattedTimeLeft = moment.duration(timeLeft, "s").format("mm:ss", {trim: false});
 
     //change time whenever session length changes
     useEffect(() => {
