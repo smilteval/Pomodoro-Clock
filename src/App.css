@@ -1,3 +1,7 @@
+body{
+    background: url(https://image.freepik.com/free-vector/seamless-pattern-cute-tomato_44538-43.jpg);
+}
+
 .App{
     background-color: rgb(250, 98, 98);
     color:azure;
@@ -6,8 +10,9 @@
     height: 700px;
     margin: auto;
     text-align: center;
-    border-radius: 40px;
+    border-radius: 60px;
     padding: 2em;
+    border: 10px solid rgb(199, 248, 234);
 }
 
 h1{
