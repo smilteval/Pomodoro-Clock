@@ -13,7 +13,7 @@ export default function Timer(props) {
 
     let [timerStatus, setTimerStatus] = useState(null);
     let [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
-    let [currentSessionType, setCurrentSessionType] = useState("session");
+    let [currentSessionType, setCurrentSessionType] = useState("Session");
 
     //turn time into mm::dd format
     let formattedTimeLeft = moment.duration(timeLeft, "s").format("mm:ss", {trim: false});
@@ -49,14 +49,14 @@ export default function Timer(props) {
                     //once the time runs out
 
                     //if in session, switch to break
-                    if(currentSessionType === "session"){
-                        setCurrentSessionType("break");
+                    if(currentSessionType === "Session"){
+                        setCurrentSessionType("Break");
                         setTimeLeft(breakLengthInSeconds);
                     }
 
                     //if on break, switch to session
-                    if(currentSessionType === "break"){
-                        setCurrentSessionType("session");
+                    if(currentSessionType === "Break"){
+                        setCurrentSessionType("Session");
                         setTimeLeft(sessionLengthInSeconds);
                     }
                 })
@@ -70,6 +70,7 @@ export default function Timer(props) {
     return (
         <div>
             <p>Time Left</p>
+            <p id = "timer-label">{currentSessionType}</p>
             <div>{formattedTimeLeft}</div>
 
             {/* if the timer has started, display "Stop" text on the button, if it hasn't, diplay "Start" */}
