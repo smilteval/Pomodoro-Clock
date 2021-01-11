@@ -92,13 +92,13 @@ function App() {
                 //if in session, switch to break
                 if(currentSessionType === "Session"){
                     setCurrentSessionType("Break");
-                    setTimeLeft(breakLengthInSeconds);
+                    return breakLengthInSeconds;
                 }
 
                 //if on break, switch to session
                 if(currentSessionType === "Break"){
                     setCurrentSessionType("Session");
-                    setTimeLeft(sessionLengthInSeconds);
+                    return sessionLengthInSeconds;
                 }
             })
         }, 100); //in milliseconds
