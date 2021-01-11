@@ -8,7 +8,7 @@ export default function Timer(props) {
 
     let {sessionLengthInSeconds} = props; 
 
-    let [timerStatus, setTimerStatus] = useState("started");
+    let [timerStatus, setTimerStatus] = useState(null);
     let [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
 
     //turn time into mm::dd format
@@ -53,7 +53,10 @@ export default function Timer(props) {
         <div>
             <p>Time Left</p>
             <div>{formattedTimeLeft}</div>
-            <button id = "start" onClick={handleStartStopClick}>Start</button>
+
+            {/* if the timer has started, display "Stop" text on the button, if it hasn't, diplay "Start" */}
+            <button id = "start" onClick={handleStartStopClick}>{timerStatus !== null ? "Stop" : "Start"}</button>
+        
         </div>
     )
 }
