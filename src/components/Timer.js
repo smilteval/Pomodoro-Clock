@@ -23,8 +23,11 @@ export default function Timer(props) {
 
         if(timerStatus !== null){ //if the timer has started
             
-            //you can stop the timer
+            //Stop the timer
             clearInterval(timerStatus);
+
+            //indicate that the timer stopped
+            setTimerStatus(null);
         }
         else{ //if the timer hasn't started
 
