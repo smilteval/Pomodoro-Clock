@@ -14,35 +14,40 @@ function App() {
 
   //increases the session timer by 1 minute
   let incrementSessionLength = () =>{
-      setSessionLength(sessionLengthInSeconds + 60);
+      let newSessionLength = sessionLengthInSeconds + 60;
+
+      //can't have a session for more than 60 mins
+      if(newSessionLength <= 3600){
+        setSessionLength(newSessionLength);
+      }
   }
 
   //decreases the session timer by 1 minute
   let decrementSessionLength = () =>{
       let newSessionLength = sessionLengthInSeconds - 60;
 
-      if(newSessionLength < 0){
-          setSessionLength(0);
-      }
-      else{
-          setSessionLength(newSessionLength);
+      if(newSessionLength > 0){
+        setSessionLength(newSessionLength);
       }
   }
 
   //increases the break timer by 1 minute
   let incrementBreakLength = () =>{
-      setBreakLength(breakLengthInSeconds + 60);
+
+      let newBreakLength = breakLengthInSeconds + 60; 
+
+      //can't take a break for more than 60 mins
+      if(newBreakLength <= 3600){
+        setBreakLength(newBreakLength);
+      }
   }
 
   //decreases the break timer by 1 minute
   let decrementBreakLength = () =>{
       let newBreakLength = breakLengthInSeconds - 60;
 
-      if(newBreakLength < 0){
-          setBreakLength(0);
-      }
-      else{
-          setBreakLength(newBreakLength);
+      if(newBreakLength > 0){
+        setBreakLength(newBreakLength);
       }
   }
 
@@ -117,8 +122,6 @@ function App() {
         decrementSessionLength = {decrementSessionLength}
       />
       <Timer
-        sessionLengthInSeconds = {sessionLengthInSeconds}
-        breakLengthInSeconds = {breakLengthInSeconds}
         currentSessionType = {currentSessionType}
         handleStartStopClick = {handleStartStopClick}
         timerStatus = {timerStatus}
