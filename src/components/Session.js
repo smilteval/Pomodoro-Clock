@@ -12,11 +12,13 @@ export default function Session(props) {
     let sessionLengthInMinutes = moment.duration(sessionLengthInSeconds,"s").minutes();
     
     return (
-        <div>
-            <p>Session</p>
-            <p>{sessionLengthInMinutes}</p>
-            <button id="increment-session" onClick={incrementSessionLength}>+</button>
-            <button id="decrement-session" onClick={decrementSessionLength}>-</button>
+        <div class="sessionType-section">
+            <h3>Session</h3>
+            <div class="sessionType-time">
+                <button class="decrement" onClick={decrementSessionLength}>-</button>
+                <p>{sessionLengthInMinutes} mins</p>
+                <button class="increment" onClick={incrementSessionLength}>+</button>
+            </div>
         </div>
     )
 }

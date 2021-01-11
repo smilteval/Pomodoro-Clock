@@ -1,0 +1,99 @@
+.App{
+    background-color: rgb(250, 98, 98);
+    color:azure;
+    font-family: 'Courier New', Courier, monospace;
+    width: 50%;
+    height: 700px;
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
+    padding: 2em;
+}
+
+h1{
+    font-size: 50px;
+}
+
+h3{
+    color:rgb(250, 98, 98);
+    margin: 0;
+}
+
+.sessionType-section{
+    background-color: rgb(255, 255, 255);
+    width: 25%;
+    height: 5em;
+    padding: 10px;
+    margin:auto;
+    font-size: 20px;
+    border-radius: 20px;
+}
+
+.sessionType-time{
+    display: flex;
+    margin:auto;
+    align-items: center;
+    justify-content: center;
+    color: rgb(250, 98, 98);
+    font-size: 25px;
+}
+
+.sessionType-time p{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sessionType-time button{
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    color:white;
+    font-size: large;
+}
+
+.decrement{
+    background-color: rgb(250, 98, 98);
+}
+
+.increment{
+    background-color: rgb(89, 158, 75);
+}
+
+#time-setting-sections{
+    display: flex;
+}
+
+#main-timer{
+    background-color: white;
+    color:rgb(250, 98, 98);
+    width: 60%;
+    height: 50%;
+    align-items: center;
+    border-radius: 50%;
+    margin:auto;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+#main-timer button{
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px 0 10px 0px;
+    border-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: rgb(250, 98, 98);
+    color:white;
+}
+
+#timer-label{
+    font-size: 50px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+#time{
+    font-size: 100px;
+    padding-bottom: 20px;
+}

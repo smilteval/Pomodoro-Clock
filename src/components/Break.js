@@ -12,11 +12,13 @@ export default function Break(props) {
     let breakLengthInMinutes = moment.duration(breakLengthInSeconds,"s").minutes();
 
     return (
-        <div>
-            <p>Break</p>
-            <p>{breakLengthInMinutes}</p>
-            <button id="increment-break" onClick={incrementBreakLength}>+</button>
-            <button id="decrement-break" onClick={decrementBreakLength}>-</button>
+        <div class = "sessionType-section">
+            <h3>Break</h3>
+            <div class = "sessionType-time">
+                <button class="decrement" onClick={decrementBreakLength}>-</button>
+                <p>{breakLengthInMinutes} mins</p>
+                <button class="increment" onClick={incrementBreakLength}>+</button>
+            </div>
         </div>
     )
 }

@@ -99,7 +99,7 @@ function App() {
         //start the timer 
         let newTimerStatus = setInterval(() => {
             setTimeLeft(prevTimeLeft => prevTimeLeft -1)
-        }, 100); //in milliseconds
+        }, 1000); //in milliseconds
 
         //indicate that the timer started
         setTimerStatus(newTimerStatus);
@@ -109,23 +109,28 @@ function App() {
   return (
     <div className="App">
       <h1>Pomodoro Clock</h1>
-      <Break
-        breakLengthInSeconds = {breakLengthInSeconds}
-        incrementBreakLength = {incrementBreakLength}
-        decrementBreakLength = {decrementBreakLength}
-      />
-      <Session
-        sessionLengthInSeconds = {sessionLengthInSeconds}
-        incrementSessionLength = {incrementSessionLength}
-        decrementSessionLength = {decrementSessionLength}
-      />
+      
       <Timer
-        currentSessionType = {currentSessionType}
-        handleStartStopClick = {handleStartStopClick}
-        timerStatus = {timerStatus}
-        timeLeft = {timeLeft}
+          currentSessionType = {currentSessionType}
+          handleStartStopClick = {handleStartStopClick}
+          handleResetButton = {handleResetButton}
+          timerStatus = {timerStatus}
+          timeLeft = {timeLeft}
       />
-      <button id="reset" onClick={handleResetButton}>Reset</button>
+
+      <div id="time-setting-sections">
+        <Break
+          breakLengthInSeconds = {breakLengthInSeconds}
+          incrementBreakLength = {incrementBreakLength}
+          decrementBreakLength = {decrementBreakLength}
+        />
+        <Session
+          sessionLengthInSeconds = {sessionLengthInSeconds}
+          incrementSessionLength = {incrementSessionLength}
+          decrementSessionLength = {decrementSessionLength}
+        />
+      </div>
+      
     </div>
   );
 }
