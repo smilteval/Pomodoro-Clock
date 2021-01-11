@@ -54,9 +54,12 @@ function App() {
   //resets the timer
 
   let handleResetButton = () => {
-
-    //clear the interval
-
+    clearInterval(timerStatus);
+    setTimerStatus(null);
+    setCurrentSessionType("Session");
+    setSessionLength(1500);
+    setBreakLength(300);
+    setTimeLeft(1500);
   }
 
   //change time whenever session length changes
@@ -127,6 +130,7 @@ function App() {
         timerStatus = {timerStatus}
         timeLeft = {timeLeft}
       />
+      <button id="reset" onClick={handleResetButton}>Reset</button>
     </div>
   );
 }
