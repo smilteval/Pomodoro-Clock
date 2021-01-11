@@ -7,6 +7,8 @@ momentDurationFormatSetup(moment);
 export default function Timer(props) {
 
     let {sessionLengthInSeconds} = props; 
+
+    let [timerStatus, setTimerStatus] = useState("started");
     let [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
 
     //turn time into mm::dd format
@@ -18,21 +20,33 @@ export default function Timer(props) {
     }, [sessionLengthInSeconds])
 
     let handleStartStopClick = () => {
-        
-        //decrement time left by one every second
-        setInterval(() => {
-            setTimeLeft(prevTimeLeft => {
 
-                let newTimeLeft = prevTimeLeft - 1;
+        if(timerStatus !== null){ //if the timer has started
+            
+            //you can stop the timer
+            clearInterval(timerStatus);
+        }
+        else{ //if the timer hasn't started
 
-                if(newTimeLeft >= 0){
-                    return newTimeLeft;
-                }
-                else{
-                    return prevTimeLeft;
-                }
-            })
-        }, 1000); //in milliseconds
+            //start the timer 
+            //decrement time left by one every second
+            let newTimerStatus = setInterval(() => {
+                setTimeLeft(prevTimeLeft => {
+
+                    let newTimeLeft = prevTimeLeft - 1;
+
+                    if(newTimeLeft >= 0){
+                        return newTimeLeft;
+                    }
+                    else{
+                        return prevTimeLeft;
+                    }
+                })
+            }, 1000); //in milliseconds
+
+            //indicate that the timer started
+            setTimerStatus(newTimerStatus);
+        }
     }
 
     return (
