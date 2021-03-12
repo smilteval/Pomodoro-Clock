@@ -2,10 +2,10 @@
 
 <!-------------------------------------------------------------------------------------------------------------------------->
 
-# Pomodoro Clock
-
 A front-end assignment completed during the NYC Tech Talent Pipeline Program. <br>
 Time management web application based on the Pomodoro Technique which allows users to modify session and break durations.
+
+<br>
 
 <!-------------------------------------------------------------------------------------------------------------------------->
 
